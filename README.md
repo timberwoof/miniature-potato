@@ -99,7 +99,8 @@ and some resistors to act as a primitie curve tracer. Having identified the base
 connect the specific base lead to that and run the trace test. It would then try to 
 determine the Hfe or suggest that E and C are reversed. 
 
-![Photo of workbench with Arduino, PCF855, relay board, perf board, and transistor.] (https://raw.githubusercontent.com/timberwoof/miniature-potato/main/IMG_4331.jpeg)
+
+## IMG_4331.jpeg
 
 ### PCF8575
 On a breadboard. I suppose I could have solderd wires or plugged a ribbon cable to the relay board. 
