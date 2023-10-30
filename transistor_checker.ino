@@ -166,6 +166,9 @@ void read_analyze_report() {
   int rca = get_reading();
   int resultac = show_reading(12, "ac", rac, "ca", rca);
 
+  // off
+  set_relays(0);
+
   // Set up to report results.
   lcd.setCursor(0, 1);
   int shorted = 0;
