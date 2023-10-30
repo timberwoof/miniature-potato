@@ -10,18 +10,18 @@ needlessly complex interface and relays to tell you within seconds
 whether a transistor is NPN, PNP, or BAD. 
 
 ## Parts List
-Arduino Uno R3
-LCD/Buttons shield (HiLetgo 1602 LCD Keypad Shield)
-breakout board (Prototype Screw Terminal Block Shield Board Kit MEGA-2560 R31 for Arduino)
-PCF8575 I2C interface (ACEIRMC 3pcs PCF8575 IO Expander Board)
-8-relay board (8CH Relay Module)
-perf board or breadboard
-12 V voltage regulator
-5 V voltage regulator
-hookup wire
-three clippy leads
-4 kOhm resistor
-1 kOhm resistor
+- Arduino Uno R3
+- LCD/Buttons shield (HiLetgo 1602 LCD Keypad Shield)
+- breakout board (Prototype Screw Terminal Block Shield Board Kit MEGA-2560 R31 for Arduino)
+- PCF8575 I2C interface (ACEIRMC 3pcs PCF8575 IO Expander Board)
+- 8-relay board (8CH Relay Module)
+- perf board or breadboard
+- 12 V voltage regulator
+- 5 V voltage regulator
+- hookup wire
+- three clippy leads
+- 4 kOhm resistor
+- 1 kOhm resistor
 
 ## Theory of Operation
 The quick-and dirty check of a transistor with an Ohm-meter is as follows: 
@@ -33,12 +33,13 @@ of conductivity from the base to the other two will tell you whether it's NPN or
 Any pair of leads that conducts in both directions is indicates a short. More than two
 pairs of open leads indicates an open. 
 
-The Miniature Potato applies these tests and repost the results in seconds. 
+The Miniature Potato applies these tests and reports the results in seconds. 
 
 The Arduino is the brains of the test fixture. It runs the program, sets the relays 
 via the I2c interface, and measures voltage drop via an analog input. 
 
-The LCD/Buttons shield provides a nice way to output the results, but uses up digital outputs. 
+The LCD/Buttons shield provides a nice way to output the results, but uses up digital 
+outputs that could have been used for relays. One could use the serial termainl instead.
 
 Thus the PCF8575, using the I2C interface, makes it wasy to control a bunch of relays. 
 
@@ -54,18 +55,18 @@ Six of the relays inflict test voltage across the legs of the transistors. Three
 test leads to ground; three connect test leads to +1 V. Two connect to test lead A, 
 two to lead B, and two to lead C. The relays get activated two at a time so that 
 one lead is +1 V and one lead is ground. The +1V is also connected to the Arduino's A1 line. 
-Thus at any time during the test sequence, one lead is +, ne lead is -, and the other
+Thus at any time during the test sequence, one lead is +, one lead is -, and the other
 is not connected. If the transistor conducts, then the + gets pulled down to roughly half a volt, 
 and that gets read by the AD converter. 1V is probably safe for any trasistor. A lower
-voltage could be used, but that would require a little ammplifier to raise the signal
+voltage could be used, but that would require a little amplifier to raise the signal
 voltage to something the AD input can reliably read. 
 
-The Arduinno checks the number of opens and shorts for an inial pass/fail check. 
+The Arduino checks the number of opens and shorts for an inial pass/fail check. 
 It then determines whether the presumbaly good transistor is PNP or NPN. 
 
 ## Construction Notes
 ### Breakout Board
-The one I got is for he Arduino Mega, but it works with the Uno R3. 
+The one I got is for the Arduino Mega, but it works with the Uno R3. 
 However, the markings for the I2C interface are wrong when using an Uno. 
 
 ### PCF8575
@@ -78,16 +79,16 @@ Connect Vcc to +5 V
 Connect JDVcc to +12 V
 
 ## Operation
-Open the sketch and download it to your Arduino. 
-Connect the transistor to the clippy leads in any combination. 
-Press a button on the LCD shield. 
-The relays will click through the equence. 
-The LCD will disgnose the transistor. 
-It will report shorts and unusual opens. 
-It will report PNP or NPN and tell which lead is connected to the base. 
+- Open the sketch and download it to your Arduino. 
+- Connect the transistor to the clippy leads in any combination. 
+- Press a button on the LCD shield. 
+- The relays will click through the equence. 
+- The LCD will diagnose the transistor. 
+- It will report shorts and unusual opens. 
+- It will report PNP or NPN and tell which lead is connected to the base. 
 
 Now you can connect the transistor to your curve tracer with a 50/50 chance
-of getting emitted and collector right. A ridiculously short set of curves
+of getting emitter and collector right. A ridiculously short set of curves
 probably means you reversed E and C. 
 
 ## Future Work
@@ -99,10 +100,8 @@ connect the specific base lead to that and run the trace test. It would then try
 determine the Hfe or suggest that E and C are reversed. 
 
 ## IMG_4331.jpeg
-Top Row:
 ### Arduino, LCD/Buttons shield, breakout board
 
-Bottom row, right to left: 
 ### PCF8575
 On a breadboard. I suppose I could have solderd wires or plugged a ribbon cable to the relay board. 
 There's more than one way to do it. 
@@ -128,4 +127,4 @@ a 4 kOhm resistor.
 Leads A and B are connected to the outside legs; lead B is clipped to the heat sink. 
 From the display on the Arduino we can see that it's a PNP and the red clipply lead
 is connected to the base. ~~It is extremely likely that~~ the heat sink and center
-condictor are the collector. 
+conductor are the collector. 
