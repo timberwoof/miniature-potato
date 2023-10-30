@@ -1,5 +1,5 @@
 # miniature-potato
-Arduino circuit and code for a simple transistor checker
+## Arduino circuit and code for a simple transistor checker
 
 A transistor curve tracer will tell you a transistor's electrical parameters
 if you know which pin to connect to which test lead. Usually you can figure
@@ -9,7 +9,7 @@ connect it, times two for whether it's PNP or NPN. This project is a
 needlessly complex interface and relays to tell you within seconds
 whether a transistor is NPN, PNP, or BAD. 
 
-Parts List
+## Parts List
 Arduino Uno R3
 LCD/Buttons shield (HiLetgo 1602 LCD Keypad Shield)
 breakout board (Prototype Screw Terminal Block Shield Board Kit MEGA-2560 R31 for Arduino)
@@ -23,7 +23,7 @@ three clippy leads
 4 kOhm resistor
 1 kOhm resistor
 
-Theory of Operation
+## Theory of Operation
 The quick-and dirty check of a transistor with an Ohm-meter is as follows: 
 Connect the leads of the Ohm-meter (or DVM in resistance mode) to every possible 
 pair of leads on the transistor. Write down or remember which pairs conduct in 
@@ -63,7 +63,21 @@ voltage to something the AD input can reliably read.
 The Arduinno checks the number of opens and shorts for an inial pass/fail check. 
 It then determines whether the presumbaly good transistor is PNP or NPN. 
 
-Operation
+## Construction Notes
+### Breakout Board
+The one I got is for he Arduino Mega, but it works with the Uno R3. 
+However, the markings for the I2C interface are wrong when using an Uno. 
+
+### PCF8575
+Connect Vcc on the end to Vcc on the side. 
+Connect bits in any convenient way to the relay board. 
+The bit assignments are set up in the sketch. 
+
+### Relay Board
+Connect Vcc to +5 V
+Connect JDVcc to +12 V
+
+## Operation
 Open the sketch and download it to your Arduino. 
 Connect the transistor to the clippy leads in any combination. 
 Press a button on the LCD shield. 
@@ -76,8 +90,42 @@ Now you can connect the transistor to your curve tracer with a 50/50 chance
 of getting emitted and collector right. A ridiculously short set of curves
 probably means you reversed E and C. 
 
-Future Work
+## Future Work
+Proper circuit diagrams are forthcoming. 
+
 Perhaps one of the leads of the Miniature Potato could make use of the other two relays
 and some resistors to act as a primitie curve tracer. Having identified the base, you'd
 connect the specific base lead to that and run the trace test. It would then try to 
 determine the Hfe or suggest that E and C are reversed. 
+
+## IMG_4331.jpeg
+Top Row:
+### Arduino, LCD/Buttons shield, breakout board
+
+Bottom row, right to left: 
+### PCF8575
+On a breadboard. I suppose I could have solderd wires or plugged a ribbon cable to the relay board. 
+There's more than one way to do it. 
+
+### Relay Board
+Six of the relays are used. You can see the red wires from the voltage regulators on the perf board, 
+and the ground wires. 
+
+### Perf Board
+At the bottom are the clippy leads A (fancy red), B (brass), C (fancy black). 
+I used telephone twisted-pare wire I had lying around to do the interconnects 
+between clippy leads and relays. The relays are wired so the make the connection
+when activated. 
+
+At the top are the two voltage regulators. The white wire comes from an old
+wall-wart supply. The LEDs and their current-limiting resistors are optional. 
+The red and black clippy leads go to my DVM. They are across the 1 Ohm resistor
+that goes in parallel with the transistor under test, The other two resistors
+are 2 kOhm resistors in series because I had them and didn't want to look for 
+a 4 kOhm resistor. 
+
+### Transistor under Test
+Leads A and B are connected to the outside legs; lead B is clipped to the heat sink. 
+From the display on the Arduino we can see that it's a PNP and the red clipply lead
+is connected to the base. ~~It is extremely likely that~~ the heat sink and center
+condictor are the collector. 
