@@ -101,7 +101,7 @@ determine the Hfe or suggest that E and C are reversed.
 
 
 ## IMG_4331.jpeg
-[Photo pf Minature Potato on workbench]
+![Photo of Minature Potato on workbench]
 (/blob/main/IMG_4331.jpeg)
 
 ### PCF8575
