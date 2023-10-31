@@ -101,8 +101,7 @@ determine the Hfe or suggest that E and C are reversed.
 
 
 ## IMG_4331.jpeg
-![Photo of Minature Potato on workbench]
-(/blob/main/IMG_4331.jpeg)
+![Photo of Minature Potato on workbench](../../blob/main/IMG_4331.jpeg)
 
 ### PCF8575
 On a breadboard. I suppose I could have solderd wires or plugged a ribbon cable to the relay board. 
