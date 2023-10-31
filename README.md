@@ -103,13 +103,23 @@ determine the Hfe or suggest that E and C are reversed.
 ## IMG_4331.jpeg
 ![Photo of Minature Potato on workbench](../../blob/main/IMG_4331.jpeg)
 
+### Arduino
+Arduino Uno with LCD/Buttons shield on a breakout board. 
+- the area occupied by "ca1" shows each test combination that is tried and whether there was conductivity (1) or not (0). ca was the last attempt. There was conductivity.
+- ba and ca mean that there was conductivity for those pin pairs in those directions.
+- OK is the program's conclusion about the basic health of the transistor.
+- PNP is the type of trasistor.
+- base:a tells me that the base is where the "A" clip was connected. 
+
 ### PCF8575
-On a breadboard. I suppose I could have solderd wires or plugged a ribbon cable to the relay board. 
+On a breadboard. I suppose I could have solderd wires 
+or plugged a ribbon cable to the relay board. 
 There's more than one way to do it. 
 
 ### Relay Board
-Six of the relays are used. You can see the red wires from the voltage regulators on the perf board, 
-and the ground wires. 
+Six of the relays are used. 
+You can see the ground wire and the red wires from 
+the voltage regulators on the perf board. 
 
 ### Perf Board
 At the bottom are the clippy leads A (fancy red), B (brass), C (fancy black). 
