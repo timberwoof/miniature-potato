@@ -100,8 +100,8 @@ connect the specific base lead to that and run the trace test. It would then try
 determine the Hfe or suggest that E and C are reversed. 
 
 
-## IMG_4331.jpeg
-![Photo of Minature Potato on workbench](../../blob/main/IMG_4331.jpeg)
+## Photos
+![Minature Potato on workbench](../../blob/main/IMG_4331.jpeg)
 
 ### Arduino
 Arduino Uno with LCD/Buttons shield on a breakout board. 
@@ -139,3 +139,8 @@ Leads A and B are connected to the outside legs; lead B is clipped to the heat s
 From the display on the Arduino we can see that it's a PNP and the red clipply lead
 is connected to the base. ~~It is extremely likely that~~ the heat sink and center
 conductor are the collector. 
+
+![Arduino and Transistor](../../blob/main/IMG_4344.jpeg)
+A close-up of the Arduino and another transistor under test. 
+This one's an NPN. B is clearly the Collector. Miniature Potato 
+correctly identified the Base lead (where the black test lead is connected).
