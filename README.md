@@ -11,13 +11,13 @@ whether a transistor is NPN, PNP, or BAD.
 
 ## Parts List
 - Arduino Uno R3
-- LCD/Buttons shield (HiLetgo 1602 LCD Keypad Shield)
+- LCD Keypad Shield
 - breakout board (Prototype Screw Terminal Block Shield Board Kit MEGA-2560 R31 for Arduino)
 - PCF8575 I2C interface (ACEIRMC 3pcs PCF8575 IO Expander Board)
 - 8-relay board (8CH Relay Module)
 - perf board or breadboard
-- 12 V voltage regulator
-- 5 V voltage regulator
+- 7812 12 V voltage regulator
+- 7805 5 V voltage regulator
 - hookup wire
 - three clippy leads
 - 4 kOhm resistor
@@ -43,8 +43,9 @@ outputs that could have been used for relays. One could use the serial termainl 
 
 Thus the PCF8575, using the I2C interface, makes it wasy to control a bunch of relays. 
 
-A dead-simple voltage divider consisting of a 4 kOhm and a 1 kOhm resistor provide the 1v
-test voltage. 
+A voltage divider consisting of a 4 kOhm and a 1 kOhm resistor connected to 
+the 5V supply provides the 1V test voltage. 
+You could use the 12V supply to make the test voltage: Use an 11kOhm resistor instead of 4kOhm. 
 
 This design uses relays instead of opto-isolators because relays accomplish extremely
 high impedance "off" conditions in ways that no transistor can. I did not ant to connect 
@@ -72,11 +73,12 @@ However, the markings for the I2C interface are wrong when using an Uno.
 ### PCF8575
 Connect Vcc on the end to Vcc on the side. 
 Connect bits in any convenient way to the relay board. 
-The bit assignments are set up in the sketch. 
+IF you do it differently, then you will have to refigure the bits. 
+The bit assignments set up in the sketch match the wiring diagram. 
 
 ### Relay Board
-Connect Vcc to +5 V
-Connect JDVcc to +12 V
+Connect Vcc to +5V. You might be able to get away with getting its power from the Arduino.
+Connect JDVcc to +12V
 
 ## Operation
 - Open the sketch and download it to your Arduino. 
@@ -92,13 +94,14 @@ of getting emitter and collector right. A ridiculously short set of curves
 probably means you reversed E and C. 
 
 ## Future Work
-Proper circuit diagrams are forthcoming. 
-
 Perhaps one of the leads of the Miniature Potato could make use of the other two relays
 and some resistors to act as a primitie curve tracer. Having identified the base, you'd
 connect the specific base lead to that and run the trace test. It would then try to 
-determine the Hfe or suggest that E and C are reversed. 
+determine the Hfe and if it's too small suggest that E and C are reversed.
 
+I tried connecting a 7800 series voltage regulator. Miniature-potato doesn't say
+it's a failure. It just reports an additional conduction mode. 
+One could write code to recognize this sort of thing. 
 
 ## Photos
 ![Minature Potato on workbench](../../blob/main/IMG_4331.jpeg)
